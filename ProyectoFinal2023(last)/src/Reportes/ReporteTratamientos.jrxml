@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="619b3b93-6eb8-40b4-9d5d-b19d5bf36799">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     tratamiento.`idTratamiento` AS tratamiento_idTratamiento,
+     tratamiento.`descripcion` AS tratamiento_descripcion,
+     tratamiento.`precio` AS tratamiento_precio,
+     tratamiento.`porcentaje_isv` AS tratamiento_porcentaje_isv,
+     tratamiento.`estado` AS tratamiento_estado
+FROM
+     `tratamiento` tratamiento]]>
+	</queryString>
+	<field name="tratamiento_idTratamiento" class="java.lang.Integer"/>
+	<field name="tratamiento_descripcion" class="java.lang.String"/>
+	<field name="tratamiento_precio" class="java.lang.Double"/>
+	<field name="tratamiento_porcentaje_isv" class="java.lang.Integer"/>
+	<field name="tratamiento_estado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="12" width="572" height="56" backcolor="#999999" uuid="ea5be869-7d49-4707-9bf3-208943b42c40"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="10" y="40" width="562" height="28" forecolor="#FFFFFF" uuid="f991d149-cc51-4616-b436-302c7cf0b504"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE TRATAMIENTOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="12" width="572" height="28" forecolor="#FFFFFF" uuid="a0655580-0542-46eb-99a6-c5ad86b12a52"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MATEO DENTAL]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="404" y="0" width="168" height="16" uuid="b54c0350-54b3-456b-b8f4-bae1d83249bf"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="2" width="572" height="20" backcolor="#CCCCCC" uuid="773b994d-490e-44aa-89d1-74e0aadc0baf"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="24" y="2" width="50" height="20" uuid="cebb8925-5c4e-4de1-b629-8b201c0fe71d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CODIGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="84" y="2" width="246" height="20" uuid="a025268b-f2e3-4682-8bb8-9c72b093e809"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCRIPCION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="345" y="2" width="59" height="20" uuid="80d034b5-1288-46f2-9bcd-934b6d904e2f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRECIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="439" y="2" width="37" height="20" uuid="8a5ce6c5-49d0-4d3f-a3ec-258f4b7f272b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ISV %]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="490" y="2" width="53" height="20" uuid="42d8605f-a1c9-476f-8a8f-7b8f3b72ff42"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTADO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="24" width="572" height="1" uuid="548e9b35-1f2a-4bde-a782-2d924b144dc4"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="24" y="0" width="50" height="20" uuid="70b0c863-8771-46f0-803a-d35e76428fc0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tratamiento_idTratamiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="84" y="0" width="246" height="20" uuid="bf04ee7b-4366-48f7-a04a-9cd87c7a67e7"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tratamiento_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="345" y="0" width="59" height="20" uuid="1470f613-c4cd-4fc4-afd3-841a636b4e78"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tratamiento_precio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="439" y="0" width="37" height="20" uuid="a14c9e8c-7830-40fb-bb5d-5be19a5ddeda"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tratamiento_porcentaje_isv}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="490" y="0" width="53" height="20" uuid="c049ed2d-c73d-4ae6-a37a-e1ce5299973c"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tratamiento_estado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="23" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="8" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="154" splitType="Stretch"/>
+	</summary>
+</jasperReport>

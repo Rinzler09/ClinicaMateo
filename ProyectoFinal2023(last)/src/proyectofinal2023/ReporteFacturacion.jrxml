@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c16cae16-e039-4bdc-a22e-2f629516dbca">
+	<property name="ireport.zoom" value="1.2100000000000009"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="paramIdFactura" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     factura.`idFactura` AS factura_idFactura,
+     factura.`Doctor` AS factura_Doctor,
+     factura.`Paciente` AS factura_Paciente,
+     factura.`Total` AS factura_Total,
+     factura.`Valor_isv` AS factura_Valor_isv,
+     factura.`Pagado` AS factura_Pagado,
+     factura.`Estado` AS factura_Estado,
+     factura.`Fecha` AS factura_Fecha,
+     facturadetalle.`idfacturaDetalle` AS facturadetalle_idfacturaDetalle,
+     facturadetalle.`idFactura` AS facturadetalle_idFactura,
+     facturadetalle.`Tratamiento` AS facturadetalle_Tratamiento,
+     facturadetalle.`Cantidad` AS facturadetalle_Cantidad,
+     facturadetalle.`Precio` AS facturadetalle_Precio,
+     facturadetalle.`Porcentaje_isv` AS facturadetalle_Porcentaje_isv,
+     facturadetalle.`Total` AS facturadetalle_Total,
+     facturadetalle.`Estado` AS facturadetalle_Estado,
+     doctores.`DoctoresID` AS doctores_DoctoresID,
+     doctores.`Nombre` AS doctores_Nombre,
+     doctores.`Especialidad` AS doctores_Especialidad,
+     doctores.`Telefono` AS doctores_Telefono,
+     doctores.`Correo` AS doctores_Correo,
+     pacientes.`PacientesID` AS pacientes_PacientesID,
+     pacientes.`Nombre` AS pacientes_Nombre,
+     pacientes.`DNI` AS pacientes_DNI,
+     pacientes.`Telefono` AS pacientes_Telefono
+FROM
+     `facturadetalle` facturadetalle INNER JOIN `factura` factura ON facturadetalle.`idFactura` = factura.`idFactura`
+     INNER JOIN `doctores` doctores ON factura.`Doctor` = doctores.`Nombre`
+     INNER JOIN `pacientes` pacientes ON factura.`Paciente` = pacientes.`Nombre`
+WHERE factura.`idFactura` = $P{paramIdFactura} AND factura.`Estado` = "Activo" AND facturadetalle.`Estado` = "Activo"]]>
+	</queryString>
+	<field name="factura_idFactura" class="java.lang.Integer"/>
+	<field name="factura_Doctor" class="java.lang.String"/>
+	<field name="factura_Paciente" class="java.lang.String"/>
+	<field name="factura_Total" class="java.lang.Double"/>
+	<field name="factura_Valor_isv" class="java.lang.Double"/>
+	<field name="factura_Pagado" class="java.lang.Boolean"/>
+	<field name="factura_Estado" class="java.lang.String"/>
+	<field name="factura_Fecha" class="java.sql.Date"/>
+	<field name="facturadetalle_idfacturaDetalle" class="java.lang.Integer"/>
+	<field name="facturadetalle_idFactura" class="java.lang.Integer"/>
+	<field name="facturadetalle_Tratamiento" class="java.lang.String"/>
+	<field name="facturadetalle_Cantidad" class="java.lang.Integer"/>
+	<field name="facturadetalle_Precio" class="java.lang.Double"/>
+	<field name="facturadetalle_Porcentaje_isv" class="java.lang.Integer"/>
+	<field name="facturadetalle_Total" class="java.lang.Double"/>
+	<field name="facturadetalle_Estado" class="java.lang.String"/>
+	<field name="doctores_DoctoresID" class="java.lang.Integer"/>
+	<field name="doctores_Nombre" class="java.lang.String"/>
+	<field name="doctores_Especialidad" class="java.lang.String"/>
+	<field name="doctores_Telefono" class="java.lang.String"/>
+	<field name="doctores_Correo" class="java.lang.String"/>
+	<field name="pacientes_PacientesID" class="java.lang.Integer"/>
+	<field name="pacientes_Nombre" class="java.lang.String"/>
+	<field name="pacientes_DNI" class="java.lang.String"/>
+	<field name="pacientes_Telefono" class="java.lang.String"/>
+	<variable name="pacientes_Nombre_1" class="java.lang.Integer" resetType="Page" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{pacientes_Nombre}]]></variableExpression>
+	</variable>
+	<variable name="varSubTotal" class="java.lang.Double">
+		<variableExpression><![CDATA[$F{factura_Total}-$F{factura_Valor_isv}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="168" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="78" width="572" height="56" backcolor="#999999" uuid="55f5d060-c16a-4bf5-bf13-576dc4307e31"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="78" width="572" height="28" forecolor="#FFFFFF" uuid="98ab7f00-6e28-403b-ad71-2fcc80d91122"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MATEO DENTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="106" width="572" height="28" forecolor="#FFFFFF" uuid="920ec641-d95d-4df1-beab-0df5e87c74ea"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FACTURA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="113" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="57" height="13" uuid="345eeea3-b489-48e6-afc7-7ce00419f94a"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PACIENTE:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="62" y="0" width="190" height="13" uuid="e0556922-b51e-41ee-8c5f-0d8685d00d93"/>
+				<textFieldExpression><![CDATA[$F{pacientes_Nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="20" width="57" height="13" uuid="62f9b26b-793e-4f04-9655-095d2c26bbd8"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DNI:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="62" y="20" width="190" height="13" uuid="f049edff-38a9-4a1e-ba70-f6c3de6e493c"/>
+				<textFieldExpression><![CDATA[$F{pacientes_DNI}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="327" y="0" width="68" height="13" uuid="4de9f70a-2a42-48e6-aa4e-07602ad6c0e3"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="400" y="0" width="148" height="13" uuid="b87cdf82-7c00-4735-99f1-b3806364443a"/>
+				<textFieldExpression><![CDATA[$F{factura_Fecha}.toLocalDate()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="327" y="19" width="68" height="13" uuid="30e73a69-97f7-4ecf-b96b-53a6db77c238"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[#FACTURA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="400" y="19" width="148" height="13" uuid="16e354c8-3fea-4d8d-91a4-3d2a164c8f65"/>
+				<textFieldExpression><![CDATA[$F{factura_idFactura}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="53" width="57" height="13" uuid="85e6c9a3-ac63-4567-aa3a-590a4f192454"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOCTOR:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="62" y="53" width="190" height="13" uuid="c576b92a-495f-4f26-a5a3-416c24677eb5"/>
+				<textFieldExpression><![CDATA[$F{doctores_Nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="71" width="82" height="13" uuid="da3ccf05-8454-4513-9178-3b175fec6520"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESPECIALIDAD:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="82" y="71" width="170" height="13" uuid="8e3448b0-320b-4788-8469-b770706e7c86"/>
+				<textFieldExpression><![CDATA[$F{doctores_Especialidad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="572" height="20" backcolor="#CCCCCC" uuid="e44debfc-ec09-4394-aa09-b0b947f708d8"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="26" y="0" width="232" height="20" uuid="e08a2796-7858-42a4-9782-e3d5ceb5c918"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TRATAMIENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="0" width="54" height="20" uuid="e9754773-15dc-4b2a-8a66-bc6daaf2afee"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRECIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="339" y="0" width="61" height="20" uuid="ab75948b-f969-4807-8b37-c56ad9c8f6b3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CANTIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="466" y="0" width="66" height="20" uuid="71cd9702-d2b3-4876-972b-2a8d49ecc2ae"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="0" width="35" height="20" uuid="1a37a333-864a-4fc7-a6b6-66b32dfbfde0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ISV %]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="572" height="20" uuid="b6ceed61-263d-43df-9031-f7f6a2e2fa0f"/>
+			</rectangle>
+			<textField>
+				<reportElement x="26" y="0" width="232" height="20" uuid="96271c2c-8f62-4f06-b461-b20e2b2fedb6"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{facturadetalle_Tratamiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="273" y="0" width="54" height="20" uuid="a6161d37-e4a6-45ac-8711-94f5b13ec4c9"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{facturadetalle_Precio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="339" y="0" width="61" height="20" uuid="c6e2e7fb-2e07-4dbc-9378-133164461c19"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{facturadetalle_Cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="0" width="35" height="20" uuid="1d9f25a0-c7f6-4452-93fa-2138e053094f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{facturadetalle_Porcentaje_isv}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="466" y="0" width="66" height="20" uuid="50346bba-c06a-4ee9-8952-a566faa77f76"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{facturadetalle_Total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="9" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="77" splitType="Stretch">
+			<staticText>
+				<reportElement x="394" y="43" width="82" height="13" uuid="97396a43-8b0e-4cd1-87e8-8e24248c603d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SUBTOTAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="479" y="43" width="60" height="13" uuid="aced0b9d-89e1-4f77-be48-d932b874d4b8"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{varSubTotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="374" y="58" width="103" height="13" uuid="a0589575-e6ef-4da1-85d7-3fad176f030e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL A PAGAR:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="479" y="58" width="60" height="13" uuid="53855bd1-d279-4f69-8e5b-fd20c7276779"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{factura_Total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="395" y="27" width="82" height="13" uuid="8bcb3957-ff7a-4f47-a0d7-17bba3d73a6d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ISV 15%:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="479" y="27" width="60" height="13" uuid="ed0e301b-5c0b-4cf8-a820-b996cea3b525"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{factura_Valor_isv}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

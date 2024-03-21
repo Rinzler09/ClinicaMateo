@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="750" pageHeight="1000" columnWidth="710" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f25bc623-bab1-4eff-a7e6-40f7e8635555">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     usuarios.`id_usuario` AS usuarios_id_usuario,
+     usuarios.`nombre_usuario` AS usuarios_nombre_usuario,
+     usuarios.`password` AS usuarios_password,
+     usuarios.`correo_electronico` AS usuarios_correo_electronico,
+     usuarios.`estado` AS usuarios_estado
+FROM
+     `usuarios` usuarios]]>
+	</queryString>
+	<field name="usuarios_id_usuario" class="java.lang.Integer"/>
+	<field name="usuarios_nombre_usuario" class="java.lang.String"/>
+	<field name="usuarios_correo_electronico" class="java.lang.String"/>
+	<field name="usuarios_estado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="710" height="79" backcolor="#999999" uuid="18600801-45a0-49fe-93fb-4bc0770c4d74"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="18" y="0" width="692" height="45" forecolor="#FFFFFF" uuid="7a69419d-3bad-4a93-930c-a84683e01e52"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MATEO DENTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="45" width="710" height="34" forecolor="#FFFFFF" uuid="718fec4a-f4bb-41bf-8456-8d79c3c2472a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="false"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE USUARIOS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="39" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="539" y="8" width="168" height="16" uuid="3fa03acc-1123-4463-89bd-a132671c54e3"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="2" width="710" height="20" backcolor="#CCCCCC" uuid="dc360b87-8f26-41fc-91a1-16decb378f52"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="18" y="4" width="100" height="20" uuid="1c00e0ca-3c78-42d6-9fa2-6095e8476a08"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CODIGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="4" width="120" height="20" uuid="9556ded5-efb8-4277-b76b-ea83edba0824"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRE ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="348" y="3" width="145" height="20" uuid="ff642d05-08c8-4a72-b4ec-99d9427537bc"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CORREO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="550" y="4" width="145" height="20" uuid="41026662-ad47-4a0d-8b27-73b92da97e4e"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTADO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="18" y="3" width="100" height="20" uuid="57c2b817-cbb4-4f78-b9bf-6adc93b747ca"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuarios_id_usuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="357" y="0" width="100" height="20" uuid="0bed103b-ee0d-4af4-abfe-96b9b68e5d8c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuarios_correo_electronico}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="550" y="3" width="100" height="20" uuid="3bbc3454-f219-4f27-b949-7d32d1ac5a79"/>
+				<textFieldExpression><![CDATA[$F{usuarios_estado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="157" y="2" width="140" height="20" uuid="ab1e8080-5b6c-4fd6-8fdf-355e30c12e2c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuarios_nombre_usuario}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="194017fd-7263-411b-86bc-dcae5c67be4d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     permisos.`id_permiso` AS permisos_id_permiso,
+     permisos.`estado` AS permisos_estado,
+     permisos.`usuario` AS permisos_usuario,
+     permisos.`formulario` AS permisos_formulario
+FROM
+     `permisos` permisos]]>
+	</queryString>
+	<field name="permisos_id_permiso" class="java.lang.Integer"/>
+	<field name="permisos_usuario" class="java.lang.String"/>
+	<field name="permisos_formulario" class="java.lang.String"/>
+	<field name="permisos_estado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="802" height="79" backcolor="#999999" uuid="2149f4a1-731a-479f-9417-2519bf488ee9"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="4" y="4" width="798" height="45" forecolor="#FFFFFF" uuid="3da55a60-3999-4521-9c16-264480eb9d96"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MATEO DENTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="45" width="799" height="34" forecolor="#FFFFFF" uuid="0e3be2ca-ec0d-402b-8d50-7251740360ef"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="false"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE PERMISOS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="627" y="6" width="168" height="16" uuid="36d10804-20d0-42e5-9589-b995618ce3ff"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="6" width="799" height="31" backcolor="#CCCCCC" uuid="c6007c6f-ec50-4aa9-a692-61c2638d936a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="26" y="12" width="100" height="20" uuid="84e0c64f-8da5-4165-9d81-f8884267cfdf"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CODIGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="189" y="12" width="100" height="20" uuid="5a01bb15-e31d-45a1-98d4-b60e50e783d4"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[USUARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="17" width="100" height="20" uuid="1e8a2ecc-a37b-4a9e-8a97-cd9dde412b9b"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FORMULARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="668" y="12" width="100" height="20" uuid="aa42f3f5-7416-45f2-9642-b814c2fbae2e"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTADO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="26" y="3" width="100" height="20" uuid="ec2b33c0-03f2-4dbd-8f7e-ffdfeb45bf75"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{permisos_id_permiso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="187" y="0" width="100" height="20" uuid="19762604-dffd-4a53-b8ee-5d20f4cfd800"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{permisos_usuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="668" y="3" width="100" height="20" uuid="8c28fa52-8bd5-456f-b096-586b0997c655"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{permisos_estado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="405" y="3" width="100" height="20" uuid="a1a9d9cb-0202-4900-9346-c6743d91a7f1"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{permisos_formulario}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

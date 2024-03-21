@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="700" pageHeight="792" columnWidth="660" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e4e8dcce-6ed5-43bd-ac12-2330edcb8657">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     doctores.`DoctoresID` AS doctores_DoctoresID,
+     doctores.`Nombre` AS doctores_Nombre,
+     doctores.`Especialidad` AS doctores_Especialidad,
+     doctores.`DNI` AS doctores_DNI,
+     doctores.`Telefono` AS doctores_Telefono,
+     doctores.`Correo` AS doctores_Correo
+FROM
+     `doctores` doctores]]>
+	</queryString>
+	<field name="doctores_DoctoresID" class="java.lang.Integer"/>
+	<field name="doctores_Nombre" class="java.lang.String"/>
+	<field name="doctores_Especialidad" class="java.lang.String"/>
+	<field name="doctores_DNI" class="java.lang.String"/>
+	<field name="doctores_Telefono" class="java.lang.String"/>
+	<field name="doctores_Correo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<rectangle>
+				<reportElement x="1" y="0" width="659" height="56" backcolor="#999999" uuid="ed653691-5bd3-4a31-a293-50009aa6fc56"/>
+			</rectangle>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="487" y="59" width="168" height="16" uuid="c95f0a59-15be-45fc-92ff-94edcf60fc6c"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="3" width="658" height="31" forecolor="#FFFFFF" uuid="29b21ad4-429c-42f7-abb2-7ff29be93e5e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MATEO DENTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="28" width="657" height="28" forecolor="#FFFFFF" uuid="829a4a2c-77e3-4e10-9903-e3f4b153fec8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="false"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE DOCTORES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="4" width="660" height="20" backcolor="#CCCCCC" uuid="0b9b329e-8154-4742-9f32-5e3175641d4c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="8" width="100" height="16" uuid="f427ff04-5ecc-48f9-80ce-c563cf98d270"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[CODIGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="8" width="100" height="16" uuid="f88e4285-65b9-4310-8b5d-553b1a2b3f9e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="8" width="100" height="16" uuid="2e64809e-85b4-49b8-8c1f-abddfcbd5107"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[ESPECIALIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="8" width="100" height="16" uuid="42c0f67f-dabf-45a0-a774-e6a2c18d29d7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[DNI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="8" width="100" height="16" uuid="50df6241-6ddc-480c-b0c9-fed9d744485d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[TELEFONO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="527" y="8" width="100" height="16" uuid="908b7b7f-137b-4ba5-8319-3f3178c4916e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[CORREO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="300" y="0" width="100" height="20" uuid="f755698c-42c4-44fb-ae05-371d24bc6f03"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{doctores_DNI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="0" width="100" height="20" uuid="661bac73-b4ca-48f5-9e7f-fca7f08f2d91"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{doctores_DoctoresID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="d10276bc-2d6c-41c1-88c6-6a196c754f86"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{doctores_Nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="20" uuid="e491875a-d2a9-4b39-a5c5-668ea4655585"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{doctores_Especialidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="100" height="20" uuid="7c231697-87af-4e26-b249-f7c527b408c9"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{doctores_Telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="0" width="160" height="20" uuid="5968e338-818c-4c6e-9bd0-4af76237ed5d"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{doctores_Correo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
